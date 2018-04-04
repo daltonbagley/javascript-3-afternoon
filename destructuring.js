@@ -21,7 +21,10 @@ var carDetails = {
   Use object destructuring to save the property values from the object carDetails into new variables. 
 */
 
-//Code Here
+let color = carDetails.color
+let make = carDetails.make
+let model = carDetails.model
+let year = carDetails.year
 
 
 
@@ -34,7 +37,9 @@ var carDetails = {
 */
 
 function greeting( obj ) {
-  //Code Here
+  let title = obj.title
+  let firstName = obj.firstName
+  let lastName = obj.lastName
   
   // Do not edit the code below.
   return 'Hello, ' + title + ' ' + firstName + ' ' + lastName + '!';
@@ -52,8 +57,21 @@ function greeting( obj ) {
   Use object destructuring to save the property values to new variables.
   Sum up the values and return the total number.
 */
+let testobj = {
+  utah: 1,
+  california: 2,
+  texas: 3,
+  arizona: 4,
+}
+function totalPopulation(obj){
+  let ut = Number(obj.utah)
+  let ca = Number(obj.california)
+  let tx = Number(obj.texas)
+  let az = Number(obj.arizona)
 
-//Code Here
+  return ut + ca + tx + az
+}
+
 
 
 
@@ -67,8 +85,13 @@ function greeting( obj ) {
   Push these new variables to an array and return the array. 
 */
 
-//Code Here
+function ingredients(obj){
+  let s1 = obj.carb
+  let s2 = obj.fat
+  let s3 = obj.protein
 
+  return [s1,s2,s3]
+}
 
 
 ////////// PROBLEM 5 //////////
@@ -85,8 +108,18 @@ function greeting( obj ) {
   Find the smallest number of the three and return that number.
 */
 
-//Code Here
+function largeNumbers({first, second, third}){
+  if(first < second){
+    if(first < third){
+      return first
+    } else {
+      return third
+    }
+  }
+  return second
+}
 
+console.log(largeNumbers({first:5, second:20, third: 35}))
 
 
 ////////// PROBLEM 6 //////////
@@ -97,6 +130,17 @@ function greeting( obj ) {
   Find the longest array and return that array.
 */
 
-//Code Here
+function numberGroups({a,b,c}){
+  if(a.length > b.length){
+    if(a.length > c.length){
+      return a
+    } else if( c.length > b.length) {
+      return c
+    }
+  }
+  return b
+}
+
+console.log(numberGroups({a: [1,2,3], b: [1,2,3,4], c:[1,2,3,4,5]}))
 
 

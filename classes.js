@@ -29,7 +29,19 @@
   Call your class Employee and receive all the data in the constructor in the order listed above.
 */
 
-//Code Here
+class Employee {
+  constructor(fname, lname, email, age){
+    this.first_name = fname;
+    this.last_name = lname;
+    this.email = email;
+    this.age = age;
+  }
+  makeWidget() {
+    return `${this.first_name} ${this.last_name} Widget`
+  }
+}
+
+let employee1 = new Employee('Dalton', 'Bagley', 'dg@mail.com', 26)
 
 
 
@@ -49,7 +61,24 @@
   Call your new class Manager
 */
 
-//Code Here
+class Manager {
+  constructor(fname, lname, email, age){
+    this.first_name = fname;
+    this.last_name = lname;
+    this.email = email;
+    this.age = age;
+    this.reports = []
+  }
+  hire(employee){
+    this.reports.push(employee)
+  }
+ fire(index){
+   this.reports.splice(index, 1)
+ }
+
+}
+
+let man1 = new Manager('Steve', 'Young', 'byuman@byu.com', 57)
 
 
 
@@ -75,9 +104,48 @@
   Call your new class ProgressiveManager
 */
 
-//Code Here
+class ProgressiveManager {
+  constructor(fname, lname, email, age){
+    this.first_name = fname;
+    this.last_name = lname;
+    this.email = email;
+    this.age = age;
+    this.reports = [];
+    this.title = 'Not a manager'
+    this.bonus = 0
+  }
+  hire(employee){
+    this.reports.push(employee)
+    if(this.reports.length === 0){
+      this.title = 'Not a manger'
+    } else if(this.reports.length > 0 && this.reports.length < 4){
+      this.title = 'Barely Manager'
+    } else if(this.reports.length >= 4 && this.reports.length < 11){
+      this.title = 'Mostly Manager'
+    } else if(this.reports.length >= 11 && this.reports.length < 51){
+      this.title = 'Manager'
+    } else if(this.reports.length >= 51 && this.reports.length < 101){
+      this.title = 'Manager Plus'
+    } else if(this.reports.length >= 101){
+      this.title = 'Bestest Manager'
+    }
+  }
+ fire(index){
+   this.reports.splice(index, 1)
+   this.bonus = this.bonus + 100
+ }
 
+}
 
+let test = new ProgressiveManager('Dalton', 'Bagley', 'email', 26)
+
+test.hire('Nick')
+test.hire('bob')
+test.hire('steve')
+test.hire('billy')
+test.fire(1)
+
+//console.log(test)
 
 ////////// PROBLEM 4 - Black Diamond //////////
 
@@ -102,6 +170,40 @@
         - It should set decrease wear_and_tear_count by 10, and set needs_reboot to false
 */
 
-//Code Here
+class Machine {
+  constructor(){
+    this.widgets_made_count = 0
+    this.wear_and_tear_count = 0
+    this.needs_reboot = false
+  }
+  makeWidgets(num){
+    this.widgets_made_count += num
+    this.wear_and_tear_count += Math.trunc(num/50)
+  }
+
+  fixMachine(){
+    this.needs_reboot = true
+  }
+
+  reboot(){
+    if(this.wear_and_tear_count <= 10){
+      this.wear_and_tear_count = 0
+    } else {
+      this.wear_and_tear_count-=10
+    }
+    this.needs_reboot = false
+  }
+}
+
+let testClass = new Machine
+
+testClass.makeWidgets(154)
+testClass.makeWidgets(240)
+testClass.makeWidgets(500)
+testClass.reboot()
+testClass.reboot()
 
 
+console.log(testClass)
+
+//console.log(Math.trunc(156/50))
