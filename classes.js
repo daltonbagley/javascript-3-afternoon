@@ -192,7 +192,9 @@ class Machine {
       this.wear_and_tear_count-=10
     }
     this.needs_reboot = false
+    return function done(){}
   }
+  
 }
 
 let testClass = new Machine
