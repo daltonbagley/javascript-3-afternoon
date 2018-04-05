@@ -186,26 +186,31 @@ class Machine {
   }
 
   reboot(){
-    if(this.wear_and_tear_count <= 10){
-      this.wear_and_tear_count = 0
+    let myMachine = this
+    return function(){
+    if(myMachine.wear_and_tear_count <= 10){
+      myMachine.wear_and_tear_count = 0
     } else {
-      this.wear_and_tear_count-=10
+      myMachine.wear_and_tear_count-=10
     }
-    this.needs_reboot = false
+    myMachine.needs_reboot = false
     return function done(){}
   }
+  }
+ 
   
 }
 
-let testClass = new Machine
+var testerMachine = new Machine
 
-testClass.makeWidgets(154)
-testClass.makeWidgets(240)
-testClass.makeWidgets(500)
-testClass.reboot()
-testClass.reboot()
+testerMachine.makeWidgets(154)
+testerMachine.makeWidgets(240)
+testerMachine.makeWidgets(500)
+testerMachine.reboot()
+let returnedFunction = testerMachine.reboot()
 
 
-console.log(testClass)
-
+console.log(testerMachine)
+console.log(returnedFunction())
+console.log(testerMachine)
 //console.log(Math.trunc(156/50))
